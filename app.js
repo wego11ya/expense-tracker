@@ -3,12 +3,16 @@ if (process.env.NODE_ENV !== "production") {
 }
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
+const exphbs = require("express-handlebars");
 require("./config/mongoose");
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.render("index");
 });
+
+app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
+app.set("view engine", "hbs");
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`);
