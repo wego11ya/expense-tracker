@@ -19,36 +19,38 @@
     <p>總金額</p>
     <p>10000</p>
   </div>
-
-  <div class="container">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th scope="row">
-            <i class="fa-solid fa-house"></i>
-          </th>
-          <td>
-            <p>吃飯</p>
-            <p>2022.11.19</p>
-          </td>
-          <td>
-            <p>10000</p>
-          </td>
-          <td>
-            <a href="/records/{{this._id}}/edit">
-              <button type="button" class="btn btn-warning">修改</button>
-            </a>
-          </td>
-          <td>
-            <form action="/records/{{this._id}}?_method=DELETE" method="POST">
-              <button type="button" class="btn btn-danger">刪除</button>
-            </form>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
+  {{#each records}}
+    <div class="container">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">
+              <i class="fa-solid fa-house"></i>
+            </th>
+            <td>
+              <p>{{this.name}}</p>
+            </td>
+            <td>
+              <p>{{this.date}}</p>
+            </td>
+            <td>
+              <p>{{this.amount}}</p>
+            </td>
+            <td>
+              <a href="/records/{{this._id}}/edit">
+                <button type="button" class="btn btn-warning">修改</button>
+              </a>
+            </td>
+            <td>
+              <form action="/records/{{this._id}}?_method=DELETE" method="POST">
+                <button type="button" class="btn btn-danger">刪除</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {{/each}}
   <div class="container">
     <a href="/records/new">
       <button type="button" class="btn btn-secondary">新增支出</button>
