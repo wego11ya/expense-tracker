@@ -1,0 +1,52 @@
+<div class="container">
+  <h4>請修改你的支出</h4>
+  <form action="/records/{{record._id}}?_method=PUT" method="POST">
+    <div class="mb-2">
+      <lable for="name">名稱<span class="text-danger">*</span></lable>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        value="{{record.name}}"
+        required
+      />
+    </div>
+    <div class="mb-2">
+      <lable for="date">日期<span class="text-danger">*</span></lable>
+      <input
+        type="date"
+        class="form-control"
+        name="date"
+        value="{{record.date}}"
+        required
+      />
+    </div>
+    <div class="mb-2">
+      <label for="category">類別<span class="text-danger">*</span></label>
+      <input type="text" name="category" value="{{record.category}}" />
+      <select
+        name="category"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option disabled selected value></option>
+        <option value="家居物業">家居物業</option>
+        <option value="交通出行">交通出行</option>
+        <option value="休閒娛樂">休閒娛樂</option>
+        <option value="餐飲食品">餐飲食品</option>
+        <option value="3">其他</option>
+      </select>
+    </div>
+    <div class="mb-2">
+      <lable for="amount">金額<span class="text-danger">*</span></lable>
+      <input
+        type="number"
+        class="form-control"
+        name="amount"
+        value="{{record.amount}}"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-warning">修改支出</button>
+  </form>
+</div>

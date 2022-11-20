@@ -12,4 +12,20 @@ router.post("/", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.get("/:id/edit", (res, req) => {
+  const id = req.params.id;
+  console.log(id);
+  Record.findById(id)
+    .lean()
+    .then((record) => res.render("edit", { record }))
+    .catch((err) => console.log(err));
+});
+
+router.put("/:id", (req, res) => {
+  const id = req.params.id;
+  Record.findOneAndUpdate({ id }, req.body)
+    .then(() => res.redirect("/"))
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;
