@@ -1,1 +1,58 @@
-<h2>This is index page!</h2>
+<div class="container">
+  <div class="container">
+    <select
+      name="sortingType"
+      class="form-select"
+      aria-label="Default select example"
+      onchange="this.form.submit()"
+    >
+      <option disabled selected value>類別</option>
+      <option value="1">家居物業</option>
+      <option value="2">交通出行</option>
+      <option value="3">休閒娛樂</option>
+      <option value="4">餐飲食品</option>
+      <option value="5">其他</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <p>總金額</p>
+    <p>10000</p>
+  </div>
+
+  <div class="container">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th scope="row">
+            <i class="fa-solid fa-house"></i>
+          </th>
+          <td>
+            <p>吃飯</p>
+            <p>2022.11.19</p>
+          </td>
+          <td>
+            <p>10000</p>
+          </td>
+          <td>
+            <a href="/records/{{this._id}}/edit">
+              <button type="button" class="btn btn-warning">修改</button>
+            </a>
+          </td>
+          <td>
+            <form action="/records/{{this._id}}?_method=DELETE" method="POST">
+              <button type="button" class="btn btn-danger">刪除</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container">
+    <a href="/records/new">
+      <button type="button" class="btn btn-secondary">新增支出</button>
+    </a>
+  </div>
+
+</div>
