@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/:id/edit", (res, req) => {
+router.get("/:id/edit", (req, res) => {
   const id = req.params.id;
   console.log(id);
   Record.findById(id)
@@ -24,6 +24,14 @@ router.get("/:id/edit", (res, req) => {
 router.put("/:id", (req, res) => {
   const id = req.params.id;
   Record.findOneAndUpdate({ id }, req.body)
+    .then(() => res.redirect("/"))
+    .catch((err) => console.log(err));
+});
+
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  Record.findById(id)
+    .then((record) => record.remove())
     .then(() => res.redirect("/"))
     .catch((err) => console.log(err));
 });
