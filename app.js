@@ -8,6 +8,7 @@ const exphbs = require("express-handlebars");
 const methodOverride = require("method-override");
 const routes = require("./routes");
 const session = require("express-session");
+const usePassport = require("./config/passport");
 require("./config/mongoose");
 
 // setting methodOverride before handling each requests from routs
@@ -26,6 +27,8 @@ app.use(
 
 // setting body-parser
 app.use(express.urlencoded({ extended: true }));
+
+usePassport(app);
 
 app.use(routes);
 
