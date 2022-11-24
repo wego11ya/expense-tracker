@@ -25,12 +25,7 @@ router.post("/register", (req, res) => {
     .then((user) => {
       if (user) {
         console.log("User already exists.");
-        res.render("register", {
-          name,
-          email,
-          password,
-          confirmPassword,
-        });
+        res.render("register", { ...req.body });
       } else {
         User.create({
           name,
@@ -44,7 +39,7 @@ router.post("/register", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/logout", (req, res, next) => {
+router.get("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
     res.redirect("/users/login");
@@ -52,5 +47,3 @@ router.post("/logout", (req, res, next) => {
 });
 
 module.exports = router;
-
-//render的地方試看看改寫成...req.body
