@@ -44,6 +44,13 @@ router.post("/register", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.post("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect("/users/login");
+  });
+});
+
 module.exports = router;
 
 //render的地方試看看改寫成...req.body
