@@ -27,8 +27,20 @@
               height="24"
               class="d-inline-block align-text-top"
             />
+            {{#if isAuthenticated}}
+              {{user.name}}の
+            {{/if}}
             簡單記帳
           </a>
+          {{#if isAuthenticated}}
+            <a href="/users/logout" class="btn btn-outline-secondary">
+              登出
+            </a>
+          {{else}}
+            <a href="/users/login" class="btn btn-outline-secondary">
+              登入
+            </a>
+          {{/if}}
         </div>
       </nav>
     </header>

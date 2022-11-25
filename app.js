@@ -28,7 +28,14 @@ app.use(
 // setting body-parser
 app.use(express.urlencoded({ extended: true }));
 
+// 在路由前要使用Passport
 usePassport(app);
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
 
 app.use(routes);
 
