@@ -17,7 +17,7 @@
 
   <div class="container">
     <p>總金額</p>
-    <p>10000</p>
+    <p>{{totalAmount}}</p>
   </div>
   {{#each records}}
     <div class="container">
@@ -34,7 +34,7 @@
               <p>{{this.date}}</p>
             </td>
             <td>
-              <p>{{this.amount}}</p>
+              <p class="amount">{{this.amount}}</p>
             </td>
             <td>
               <a href="/records/{{this._id}}/edit">
@@ -56,5 +56,4 @@
       <button type="button" class="btn btn-secondary">新增支出</button>
     </a>
   </div>
-
 </div>
