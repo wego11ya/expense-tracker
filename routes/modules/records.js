@@ -15,10 +15,17 @@ router.post("/", (req, res) => {
 
 router.get("/:id/edit", (req, res) => {
   const userId = req.user._id;
-  const id = req.params.id;
-  Record.findOne({ id, userId })
+  const _id = req.params.id;
+  Record.findOne({ _id, userId })
     .lean()
-    .then((record) => res.render("edit", { record }))
+    .then((record) => {
+      record.date = record.date.toLocaleDateString("fr-CA", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      });
+      res.render("edit", { record });
+    })
     .catch((err) => console.log(err));
 });
 
