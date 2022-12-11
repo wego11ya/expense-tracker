@@ -10,12 +10,16 @@ const routes = require("./routes");
 const session = require("express-session");
 const usePassport = require("./config/passport");
 const flash = require("connect-flash");
+const handlebarsHelpers = require("./helpers/handlebars-helpers");
 require("./config/mongoose");
 
 // setting methodOverride before handling each requests from routs
 app.use(methodOverride("_method"));
 
-app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
+app.engine(
+  "hbs",
+  exphbs({ defaultLayout: "main", extname: ".hbs", helpers: handlebarsHelpers })
+);
 app.set("view engine", "hbs");
 
 app.use(
