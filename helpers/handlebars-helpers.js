@@ -7,14 +7,12 @@ const iconDetails = {
   5: ["其他", "fa-solid fa-pen"],
 };
 
-const iconChoose = Handlebars.registerHelper("iconChoose", function (num) {
-  const icon = iconDetails[num][1];
-  return icon;
+Handlebars.registerHelper("iconChoose", function (num) {
+  return iconDetails[num][1];
 });
 
 module.exports = {
   ifCond: function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
   },
-  iconChoose,
 };
