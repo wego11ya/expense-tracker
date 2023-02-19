@@ -1,28 +1,28 @@
 # Expense Tracker
 
 ## Introduction
-A web application of expense details recorded, including name, date, category, amount, and you can check it by registering account。
+A web application of expense details, including name, date, category, amount, and you can check it by registering account。
 
 ## Features
 
 - Register account
-- Add a expense record
-- Edit a expense record detail
-- Delete a expense record
-- Check different categories of total expenses
+- Create an expense record
+- Edit an expense record detail
+- Delete an expense record
+- Sort expenses by different categories
 
 ## Install
 
-1. Store this project to local
+1. Clone this project to your local repository
 
 ```
 git clone https://github.com/wego11ya/expense-tracker.git
 ```
 
-2. Switch to project folder
+2. Change directory to project folder
 
 ```
-cd expense_tracker
+cd expense-tracker
 ```
 
 3. Install npm packages required
@@ -49,3 +49,5 @@ npm run start
 - Password: `12345678`
 
 ## Developer
+
+- [Wei](https://github.com/wego11ya)

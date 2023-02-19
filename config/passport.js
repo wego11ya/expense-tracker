@@ -2,7 +2,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-const FacebookStrategy = require("passport-facebook");
+const FacebookStrategy = require("passport-facebook").Strategy
 
 module.exports = (app) => {
   // 初始化Passport

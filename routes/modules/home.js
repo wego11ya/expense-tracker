@@ -34,7 +34,6 @@ router.get("/", (req, res) => {
             day: "2-digit",
           });
         });
-        console.log(categories,'===', categoryId)
         // 記得要把categories/categoryId要傳到前端
         res.render("index", { records, totalAmount, categories, categoryId });        
       })
