@@ -9,13 +9,16 @@ const Category = require("../../models/category")
 router.get("/", (req, res) => {
   const categories = []
   const userId = req.user._id;  
-  const categoryId = req.query.sortByCategory
+  const categoryId = Number(req.query.sortByCategory)
   // 一開始categoryId是undefined，或是全部類別，就把所有資料撈出來; 否則就去撈前端傳回來的categoryId
-  const filter = (!categoryId || categoryId === '0') ? { userId } : { userId, categoryId }
+
+  const filter = categoryId ? { userId, categoryId }: { userId } 
   
   // 先把所有的category找出來再放到categories陣列，最後再傳回前端
   Category.find()
     .lean()
+    // 將類別依Category.id去作升冪排列
+    .sort({id : 1 })
     .then(category => categories.push(...category))
     .then(() => {
       Record.find(filter)
@@ -31,7 +34,9 @@ router.get("/", (req, res) => {
             day: "2-digit",
           });
         });
-        res.render("index", { records, totalAmount, categories });        
+        console.log(categories,'===', categoryId)
+        // 記得要把categories/categoryId要傳到前端
+        res.render("index", { records, totalAmount, categories, categoryId });        
       })
       .catch((err) => console.log(err));
     })

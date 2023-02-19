@@ -8,7 +8,7 @@
         onchange="this.form.submit()"
       >
         <option value="" disabled selected>類別</option>
-        <option value="0">全部類別</option>
+        <option value="">全部類別</option>
         {{#each categories}}
         <option value="{{this.id}}" {{#ifCond this.id ../categoryId}}selected{{/ifCond}}>{{this.name}}</option>
         {{/each}}
@@ -20,10 +20,11 @@
     <p>總金額</p>
     <p>{{totalAmount}}</p>
   </div>
-  {{#each records}}
+  
     <div class="container">
       <table class="table table-striped">
         <tbody>
+         {{#each records}} 
           <tr>
             <th scope="row">
               <i class="{{iconChoose this.categoryId}}"></i>
@@ -48,10 +49,11 @@
               </form>
             </td>
           </tr>
+        {{/each}}
         </tbody>
       </table>
     </div>
-  {{/each}}
+  
   <div class="container">
     <a href="/records/new">
       <button type="button" class="btn btn-secondary">新增支出</button>
