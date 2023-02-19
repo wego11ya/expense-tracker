@@ -41,16 +41,16 @@ router.get("/:id/edit", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const userId = req.user._id;
-  const id = req.params.id;
-  Record.findOneAndUpdate({ id, userId }, req.body)
+  const _id = req.params.id;
+  Record.findOneAndUpdate({ _id, userId }, req.body)
     .then(() => res.redirect("/"))
     .catch((err) => console.log(err));
 });
 
 router.delete("/:id", (req, res) => {
   const userId = req.user._id;
-  const id = req.params.id;
-  Record.findOne({ id, userId })
+  const _id = req.params.id;
+  Record.findOne({ _id, userId })
     .then((record) => record.remove())
     .then(() => res.redirect("/"))
     .catch((err) => console.log(err));
