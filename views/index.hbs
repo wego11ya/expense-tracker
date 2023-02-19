@@ -2,18 +2,16 @@
   <div class="container">
     <form action="/" method="GET">
       <select
-        name="categoryId"
+        name="sortByCategory"
         class="form-select"
         aria-label="Default select example"
         onchange="this.form.submit()"
       >
-        <option disabled selected>類別</option>
-        <option value="6">全部類別</option>
-        <option value="1">家居物業</option>
-        <option value="2">交通出行</option>
-        <option value="3">休閒娛樂</option>
-        <option value="4">餐飲食品</option>
-        <option value="5">其他</option>
+        <option value="" disabled selected>類別</option>
+        <option value="0">全部類別</option>
+        {{#each categories}}
+        <option value="{{this.id}}" {{#ifCond this.id ../categoryId}}selected{{/ifCond}}>{{this.name}}</option>
+        {{/each}}
       </select>
     </form>
   </div>
