@@ -5,7 +5,7 @@ const passport = require("passport");
 router.get(
   "/facebook",
   passport.authenticate("facebook", {
-    scope: ["email", "publick_profile"],
+    scope: ["email", "public_profile"],
   })
 );
 
